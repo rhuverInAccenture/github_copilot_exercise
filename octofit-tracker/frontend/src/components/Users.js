@@ -16,13 +16,32 @@ const Users = () => {
   }, [apiUrl]);
 
   return (
-    <div>
-      <h2>Users</h2>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>{user.name} ({user.email}) - Team: {user.team}</li>
-        ))}
-      </ul>
+    <div className="card">
+      <div className="card-body">
+        <h2 className="card-title mb-4">Users</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-bordered">
+            <thead className="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map(user => (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.team}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
