@@ -28,4 +28,7 @@ router.register(r'leaderboard', LeaderboardViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/root/', lambda request: __import__('django.http').http.JsonResponse({
+        'codespace_url': f"https://{__import__('os').environ.get('CODESPACE_NAME', 'localhost')}-8000.app.github.dev"
+    })),
 ]
